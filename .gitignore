@@ -1,0 +1,9 @@
+.env
+SOLO_挑战赛投稿.md
+output/
+logs/
+.venv/
+.trae/
+__pycache__/
+*.pyc
+.DS_Store

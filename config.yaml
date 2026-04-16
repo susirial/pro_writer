@@ -1,0 +1,101 @@
+system:
+  app_name: "novel_agent_system"
+  log_level: "INFO"
+  log_file: "logs/system.log"
+  base_dir: "."
+  output_dir: "output"
+  max_retries: 3
+  max_rewrites: 3
+
+model:
+  agent:
+    provider: ${MODEL_AGENT_PROVIDER:openai}
+    name: ${MODEL_AGENT_NAME:doubao-seed-1-6-250615}
+    api_base: ${MODEL_AGENT_API_BASE:https://ark.cn-beijing.volces.com/api/v3/}
+    api_key: ${MODEL_AGENT_API_KEY}
+    timeout: ${MODEL_AGENT_TIMEOUT:60}
+    max_retries: ${MODEL_AGENT_MAX_RETRIES:3}
+
+models:
+  writer:
+    model_name: ${MODEL_WRITER_NAME:}
+    temperature: ${MODEL_WRITER_TEMPERATURE:0.7}
+    provider: ${MODEL_WRITER_PROVIDER:}
+    api_base: ${MODEL_WRITER_API_BASE:}
+    api_key: ${MODEL_WRITER_API_KEY:}
+    timeout: ${MODEL_WRITER_TIMEOUT:}
+    max_retries: ${MODEL_WRITER_MAX_RETRIES:}
+  reviewer:
+    model_name: ${MODEL_REVIEWER_NAME:}
+    temperature: ${MODEL_REVIEWER_TEMPERATURE:0.3}
+    provider: ${MODEL_REVIEWER_PROVIDER:}
+    api_base: ${MODEL_REVIEWER_API_BASE:}
+    api_key: ${MODEL_REVIEWER_API_KEY:}
+    timeout: ${MODEL_REVIEWER_TIMEOUT:}
+    max_retries: ${MODEL_REVIEWER_MAX_RETRIES:}
+  reader:
+    model_name: ${MODEL_READER_NAME:}
+    temperature: ${MODEL_READER_TEMPERATURE:0.5}
+    provider: ${MODEL_READER_PROVIDER:}
+    api_base: ${MODEL_READER_API_BASE:}
+    api_key: ${MODEL_READER_API_KEY:}
+    timeout: ${MODEL_READER_TIMEOUT:}
+    max_retries: ${MODEL_READER_MAX_RETRIES:}
+  reader_1:
+    model_name: ${MODEL_READER_1_NAME:}
+    temperature: ${MODEL_READER_1_TEMPERATURE:}
+    provider: ${MODEL_READER_1_PROVIDER:}
+    api_base: ${MODEL_READER_1_API_BASE:}
+    api_key: ${MODEL_READER_1_API_KEY:}
+    timeout: ${MODEL_READER_1_TIMEOUT:}
+    max_retries: ${MODEL_READER_1_MAX_RETRIES:}
+  reader_2:
+    model_name: ${MODEL_READER_2_NAME:}
+    temperature: ${MODEL_READER_2_TEMPERATURE:}
+    provider: ${MODEL_READER_2_PROVIDER:}
+    api_base: ${MODEL_READER_2_API_BASE:}
+    api_key: ${MODEL_READER_2_API_KEY:}
+    timeout: ${MODEL_READER_2_TIMEOUT:}
+    max_retries: ${MODEL_READER_2_MAX_RETRIES:}
+  reader_3:
+    model_name: ${MODEL_READER_3_NAME:}
+    temperature: ${MODEL_READER_3_TEMPERATURE:}
+    provider: ${MODEL_READER_3_PROVIDER:}
+    api_base: ${MODEL_READER_3_API_BASE:}
+    api_key: ${MODEL_READER_3_API_KEY:}
+    timeout: ${MODEL_READER_3_TIMEOUT:}
+    max_retries: ${MODEL_READER_3_MAX_RETRIES:}
+  reader_4:
+    model_name: ${MODEL_READER_4_NAME:}
+    temperature: ${MODEL_READER_4_TEMPERATURE:}
+    provider: ${MODEL_READER_4_PROVIDER:}
+    api_base: ${MODEL_READER_4_API_BASE:}
+    api_key: ${MODEL_READER_4_API_KEY:}
+    timeout: ${MODEL_READER_4_TIMEOUT:}
+    max_retries: ${MODEL_READER_4_MAX_RETRIES:}
+  reader_5:
+    model_name: ${MODEL_READER_5_NAME:}
+    temperature: ${MODEL_READER_5_TEMPERATURE:}
+    provider: ${MODEL_READER_5_PROVIDER:}
+    api_base: ${MODEL_READER_5_API_BASE:}
+    api_key: ${MODEL_READER_5_API_KEY:}
+    timeout: ${MODEL_READER_5_TIMEOUT:}
+    max_retries: ${MODEL_READER_5_MAX_RETRIES:}
+  orchestrator:
+    model_name: ${MODEL_ORCHESTRATOR_NAME:}
+    temperature: ${MODEL_ORCHESTRATOR_TEMPERATURE:0.1}
+    provider: ${MODEL_ORCHESTRATOR_PROVIDER:}
+    api_base: ${MODEL_ORCHESTRATOR_API_BASE:}
+    api_key: ${MODEL_ORCHESTRATOR_API_KEY:}
+    timeout: ${MODEL_ORCHESTRATOR_TIMEOUT:}
+    max_retries: ${MODEL_ORCHESTRATOR_MAX_RETRIES:}
+
+prompts:
+  writer: "screenwriter_system_prompt.md"
+  reviewer: "reader_ai_content_reviewer_6_system_prompt.md"
+  reader_1: "reader_persona_1_plot_critic.md"
+  reader_2: "reader_persona_2_character_analyst.md"
+  reader_3: "reader_persona_3_scene_visualizer.md"
+  reader_4: "reader_persona_4_entertainment_seeker.md"
+  reader_5: "reader_persona_5_theme_critic.md"
+  orchestrator: "reader_ai_content_reviewer_6_system_prompt.md"
