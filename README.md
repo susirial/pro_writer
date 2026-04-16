@@ -1,4 +1,4 @@
-# 起点中文小说审核：多智能体小说创作与评审系统
+# 多智能体小说创作与评审系统
 
 本项目是一个基于火山引擎 VeADK（Volcengine Agent Development Kit）构建的“写作 + 多视角评审 + 强制修订 + 断点续跑”的小说创作流水线。系统通过状态机编排作家智能体、审阅专员与多位读者视角智能体，实现章节级的持续产出与质量迭代。
 
@@ -25,8 +25,8 @@
 │                                                               │
 │  Writer        -> GLM-5.1 (示例：Z.ai)                         │
 │  Reviewer      -> 豆包 2.0 (Ark OpenAI 网关)                   │
-│  Reader_1..5   -> DeepSeek v2 / 豆包 2.0 / GLM-5.1 (可混用)     │
-│  Orchestrator  -> 豆包 2.0 / DeepSeek v2 / GLM-5.1             │
+│  Reader_1..5   -> DeepSeek v3 / 豆包 2.0 / GLM-5.1 (可混用)     │
+│  Orchestrator  -> 豆包 2.0 / DeepSeek v3 / GLM-5.1             │
 │                                                               │
 │  配置方式：复制 .example_env 为 .env，然后按需要替换模型/Key     │
 └───────────────────────────────────────────────────────────────┘
