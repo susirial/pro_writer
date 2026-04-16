@@ -15,6 +15,23 @@
 - 计划调试输出：`run` 前可打印写作计划节选辅助排障
 - 角色级模型配置：支持为不同智能体分别配置 model_name/api_base/api_key/timeout/retries
 
+## FSM 是什么（为什么这个项目用它）
+FSM（Finite State Machine，有限状态机）是一种把复杂流程拆成“有限个状态 + 明确的状态迁移规则”的工程化方法。这个项目把“写作/评审/修订/推进章节”的流水线做成 FSM，有三个直接收益：
+- 可控：每一步只能从指定状态进入下一步，避免脚本一跑就乱写/乱推进
+- 可恢复：状态落盘到 `output/写作任务状态.md`，中断后可用 `resume` 继续跑
+- 可观测：日志里会明确打印 `FSM: <State> (Chapter N)`，方便定位卡在哪一步
+
+本项目核心状态（简化）：
+- Init：初始化输出与状态文件
+- Wait_User：等待用户填写并确认 `output/用户需求.md`
+- Plan：生成写作计划
+- Confirm_Plan：等待用户确认 `output/写作计划确认.md`
+- Write：写第 N 章正文（强绑定用户需求 + 写作计划）
+- Async_Review：并发评审（reviewer + reader_1~5），输出 `第N章读者反馈.md`
+- Rewrite：根据评审意见强制修订一次
+- Next_Chapter：生成摘要、推进到下一章或结束
+- Done：全部章节完成
+
 ## 业务流程图（ASCII）
 
 ### 0) 模型可配置（多模型混用）总览
