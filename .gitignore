@@ -7,3 +7,5 @@ logs/
 __pycache__/
 *.pyc
 .DS_Store
+*审稿报告.md
+*审核报告.md
