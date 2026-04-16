@@ -268,6 +268,24 @@ MODEL_READER_1_MAX_RETRIES=3
 - 模型默认值与各角色覆盖字段位于 `model.agent` 与 `models.*`
 - 提示词映射位于 `prompts.*`
 
+### 3) 提示词可替换（可复用为通用“文案生成 + 多角色审核”系统）
+本项目之所以能稳定做“写作 → 并发评审 → 修订”，核心是 **工作流（FSM）与智能体角色划分**，而不是“只能写小说”。你可以通过替换提示词，把它改造成任意内容生产与审核系统（营销文案、PRD/周报、客服话术、合规审校、技术文档等）。
+
+提示词入口在 [config.yaml](file:///Users/susirial/work_station/SOLO_MTC_SHOW/%E8%B5%B7%E7%82%B9%E4%B8%AD%E6%96%87%E5%B0%8F%E8%AF%B4%E5%AE%A1%E6%A0%B8/config.yaml#L93-L101) 的 `prompts.*`：
+- `prompts.writer`：Writer 主提示词（决定“写什么/怎么写”）
+- `prompts.reviewer`：审阅专员提示词（决定“怎么审/审哪些维度”）
+- `prompts.reader_1..5`：5 个读者 persona（决定“从哪些视角挑毛病/给建议”）
+- `prompts.orchestrator`：流程编排提示词（可选，用于决策/摘要等）
+
+两种替换方式：
+- 直接编辑现有提示词文件（例如 `screenwriter_system_prompt.md`）把“小说写作”改成“营销文案写作”
+- 新建你的提示词文件（例如 `marketing_writer.md`、`legal_reviewer.md`），然后修改 `config.yaml` 的 `prompts.*` 指向新文件
+
+最佳实践建议：
+- Writer 提示词里明确“输入格式/输出格式/禁用项”（例如只输出 Markdown、禁止胡编数据）
+- Reviewer/Reader 提示词里明确“检查清单”与“输出结构”（例如问题列表 + 修改建议）
+- 通过多 persona reader 覆盖不同维度（逻辑/风格/合规/可读性/转化率）
+
 ## 快速开始（推荐流程）
 
 本系统采用“文件驱动输入”，需求不是在命令行交互输入，而是写入并确认 `output/用户需求.md`。
